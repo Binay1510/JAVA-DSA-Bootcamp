@@ -1,7 +1,3 @@
-// Singly linked list Insertion operations:
-        // 1. AT front   2. AT ANY POSITION    3. AT END
-
-
 package linkedlst;
 
 //ll node
@@ -14,7 +10,7 @@ class Node{
 //class to insert element in LL
 class LinkedList{
     Node head;     //head of list
-
+   // INSERTION 
     //function to insert a new node at front of LL
     void insertAtFront(int new_data){
         Node new_node =new Node();       //create a new node or allocate
@@ -74,6 +70,20 @@ class LinkedList{
         }
         System.out.println();
     }
+//DELTE IN LINKED LIST
+    //1. DELETE FROM STARTING
+    public void Delete_Start() {
+        if (head == null) {
+            System.out.println("List is empty , not possible to delete");
+            return;
+        }
+        System.out.println("deleted " + head.data);
+        //move head to next node
+        head = head.next;
+    }
+
+    //2. DELETE AT MIDDLE / ANY POSITION
+    
 
     // driver code
 
@@ -85,8 +95,6 @@ class LinkedList{
         list.insertAtFront(6);
         list.printList();
         //insert at start
-
-        System.out.println("after insert");
         list.insertAtFront(5);
         list.insertAtFront(4);
         list.insertAtFront(3);
@@ -96,11 +104,15 @@ class LinkedList{
         //inserting at middle
         System.out.println("Inseert at any position");
         list.insertAtSpecific(1,22);
+        list.insertAtSpecific(3,10);
         list.printList();
 
         System.out.println("at end ");
         list.InsertAtEnd(56);
 
+        list.printList();
+
+        list.Delete_Start();
         list.printList();
 
 
