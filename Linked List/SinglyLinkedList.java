@@ -10,7 +10,7 @@ class Node{
 //class to insert element in LL
 class LinkedList{
     Node head;     //head of list
-   // INSERTION 
+
     //function to insert a new node at front of LL
     void insertAtFront(int new_data){
         Node new_node =new Node();       //create a new node or allocate
@@ -72,18 +72,57 @@ class LinkedList{
     }
 //DELTE IN LINKED LIST
     //1. DELETE FROM STARTING
-    public void Delete_Start() {
+    public Node Delete_Start() {    //make Node-> void in case of first method and return void
         if (head == null) {
             System.out.println("List is empty , not possible to delete");
-            return;
+            return head;
         }
-        System.out.println("deleted " + head.data);
-        //move head to next node
-        head = head.next;
+//        System.out.println("deleted " + head.data);
+//        //move head to next node
+//        head = head.next;
+        Node temp= head; // second method
+        head =head.next;
+        temp.next =null;
+        return temp;
     }
 
-    //2. DELETE AT MIDDLE / ANY POSITION
-    
+    //2. DELETE AT END
+
+    public Node Delete_End(){
+        //check if list is empty
+        if(head== null || head.next ==null){
+            return head;
+        }
+        Node current =head;
+        Node previous =null;
+
+        while (current.next!=null){
+            previous=current;
+            current=current.next;
+        }
+        previous.next=null;   //deleted end node
+        return current;
+    }
+
+    //3. Delete node at any position
+    public void deleteAtPosition(int position){    //we start the LL from 1 position
+        //if node to be delated is on 1 position
+        if(position==1){
+            head=head.next;
+        }
+        else{  //maintain a count from 1 and loop until count<position-1 i.e 1 node behind the node to be deleted
+            Node previous=head;
+            int count =1;
+
+            while (count<position-1){
+                previous=previous.next ;
+                count++;
+            }
+            Node current=previous.next;
+            previous.next = current.next;  //free memory
+
+        }
+    }
 
     // driver code
 
@@ -112,7 +151,16 @@ class LinkedList{
 
         list.printList();
 
+        System.out.println("Delete node at start");
         list.Delete_Start();
+        list.printList();
+
+        System.out.println("Delete node at end");
+        list.Delete_End();
+        list.printList();
+
+        System.out.println("Delete from any position");
+        list.deleteAtPosition(4);
         list.printList();
 
 
