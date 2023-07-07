@@ -124,6 +124,36 @@ class LinkedList{
         }
     }
 
+    //FIND LENGTH OF SINGLY LL
+    public int length(){
+
+        if(head==null){
+            return 0;
+        }
+        Node current=head;
+        int count =0;
+        while (current!=null){
+             count ++ ;
+            current=current.next;
+        }
+        return count;
+    }
+
+    // SEARCH IN LL
+//    static boolean searchKey(Node head,int key){
+//        if (head==null){
+//            return false;
+//        }
+//        Node current=head;
+//        while (current != null){
+//            if(current.data == key){
+//                return true;
+//            }
+//            current = current.next;
+//        }
+//        return  false;
+//
+//    }
     // driver code
 
     public static void main(String[] args) {
@@ -163,6 +193,15 @@ class LinkedList{
         list.deleteAtPosition(4);
         list.printList();
 
+        System.out.println("Length of Singly Linked List : " + list.length());
+
+
+//        if (list.length(head,5)){
+//            System.out.println("key found");
+//        }
+//        else {
+//            System.out.println("key not found");
+//        }
 
     }
 }
